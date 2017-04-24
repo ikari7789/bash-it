@@ -602,12 +602,12 @@ _docker_compose() {
 		case "${words[$counter]}" in
 			$(__docker_compose_to_extglob "$top_level_boolean_options") )
 				local opt=${words[counter]}
-				top_level_options+=($opt)
+				top_level_options=(${top_level_options[@]} $opt)
 				;;
 			$(__docker_compose_to_extglob "$top_level_options_with_args") )
 				local opt=${words[counter]}
 				local arg=${words[++counter]}
-				top_level_options+=($opt $arg)
+				top_level_options=(${top_level_options[@]} $opt $arg)
 				;;
 			-*)
 				;;
